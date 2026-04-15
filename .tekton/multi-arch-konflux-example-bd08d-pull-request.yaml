@@ -177,6 +177,8 @@ spec:
       params:
       - name: IMAGE
         value: $(params.output-image)
+      - name: SKIP_TLS_VERIFY
+        value: "true"
       - name: DOCKERFILE
         value: $(params.dockerfile)
       - name: CONTEXT
