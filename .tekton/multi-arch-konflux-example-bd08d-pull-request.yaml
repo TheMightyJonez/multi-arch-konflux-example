@@ -130,13 +130,17 @@ spec:
           value: task
         resolver: bundles
     - name: upload-sbom
+      taskRef:
+        name: upload-sbom
       params:
       - name: IMAGE_URL
         value: $(params.output-image)
+      - name: IMAGE_DIGEST
+        value: $(tasks.build-container.results.IMAGE_DIGEST)
       - name: SKIP_TLS_VERIFY
         value: "true"
-      - name: ALLOW_INSECURE_REGISTRY
-        value: "true"
+      runAfter:
+      - build-container
     - name: clone-repository
       params:
       - name: url
