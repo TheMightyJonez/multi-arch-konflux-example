@@ -10,7 +10,7 @@ metadata:
     pipelinesascode.tekton.dev/max-keep-runs: "3"
     pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch
       == "main"
-    pipelinesascode.tekton.dev/task: "[upload-sbom, buildah, clair-scan]"
+    pipelinesascode.tekton.dev/task: "[buildah]"
 
   creationTimestamp: null
   labels:
@@ -131,18 +131,6 @@ spec:
         - name: kind
           value: task
         resolver: bundles
-    - name: upload-sbom
-      taskRef:
-        name: upload-sbom
-      params:
-      - name: IMAGE_URL
-        value: $(params.output-image)
-      - name: IMAGE_DIGEST
-        value: $(tasks.build-container.results.IMAGE_DIGEST)
-      - name: SKIP_TLS_VERIFY
-        value: "true"
-      runAfter:
-      - build-container
     - name: clone-repository
       params:
       - name: url
