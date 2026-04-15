@@ -129,6 +129,14 @@ spec:
         - name: kind
           value: task
         resolver: bundles
+    - name: upload-sbom
+      params:
+      - name: IMAGE_URL
+        value: $(params.output-image)
+      - name: SKIP_TLS_VERIFY
+        value: "true"
+      - name: ALLOW_INSECURE_REGISTRY
+        value: "true"
     - name: clone-repository
       params:
       - name: url
