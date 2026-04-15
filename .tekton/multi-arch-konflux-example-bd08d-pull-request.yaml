@@ -24,7 +24,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: "registry-service.kind-registry.svc.cluster.local:443/default-tenant/multi-arch-demo:{{revision}}"
+    value: "registry-service.kind-registry:443/default-tenant/multi-arch-demo:{{revision}}"
   - name: image-expires-after
     value: 5d
   - name: dockerfile
@@ -179,6 +179,8 @@ spec:
         value: $(params.output-image)
       - name: SKIP_TLS_VERIFY
         value: "true"
+      - name: tls-verify
+        value: "false"
       - name: DOCKERFILE
         value: $(params.dockerfile)
       - name: CONTEXT
