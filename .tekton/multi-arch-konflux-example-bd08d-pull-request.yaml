@@ -24,7 +24,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: ""registry-service.kind-registry.svc.cluster.local:443/default-tenant/multi-arch-demo:$(params.revision)""
+    value: "registry-service.kind-registry.svc.cluster.local:443/default-tenant/multi-arch-demo:$(params.revision)"
   - name: image-expires-after
     value: 5d
   - name: dockerfile
