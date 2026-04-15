@@ -178,6 +178,8 @@ spec:
         value: "true"
       - name: tls-verify
         value: "false"
+      - name: BUILDAH_FORMAT
+        value: oci
       - name: DOCKERFILE
         value: $(params.dockerfile)
       - name: CONTEXT
@@ -233,7 +235,7 @@ spec:
         value:
         - $(tasks.build-container.results.IMAGE_URL)@$(tasks.build-container.results.IMAGE_DIGEST)
       - name: BUILDAH_FORMAT
-        value: $(params.buildah-format)
+        value: oci
       runAfter:
       - build-container
       taskRef:
