@@ -9,3 +9,4 @@ In order to prevent all component pipelines from being run on every cluster (inc
 3. Apply the above changes to the YAML file.
 4. For both the pull-request and push pipeline files created for the component, add the following expression to the `pipelinesascode.tekton.dev/on-cel-expressions` annotation:
   `&& "{{ cluster }}" == "<name of cluster>"`
+5.
